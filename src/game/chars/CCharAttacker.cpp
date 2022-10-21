@@ -246,9 +246,10 @@ bool CChar::Attacker_GetIgnore(int attackerIndex) const
 void CChar::Attacker_Clear()
 {
     ADDTOCALLSTACK("CChar::Attacker_Clear");
-    if (IsTrigUsed(TRIGGER_COMBATEND))
+    if (!Fight_IsActive() || !m_Fight_Targ_UID.IsValidUID() || !m_Fight_Targ_UID.CharFind())
     {
-        if (!Fight_IsActive() || !m_Fight_Targ_UID.IsValidUID() || !m_Fight_Targ_UID.CharFind())
+        StatFlag_Clear(STATF_WAR);
+        if (IsTrigUsed(TRIGGER_COMBATEND))
         {
             OnTrigger(CTRIG_CombatEnd, this, 0);
         }
