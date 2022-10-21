@@ -97,7 +97,7 @@ void CItemMultiCustom::BeginCustomize(CClient* pClientSrc, bool continueCustomiz
     // copy the main design to working, ready for editing
     if (!continueCustomize)
     {
-        // copy the main design to working, ready for editing
+        //// copy the main design to working, ready for editing
         CopyDesign(&m_designMain, &m_designWorking);
         ++m_designWorking.m_iRevision;
     }
