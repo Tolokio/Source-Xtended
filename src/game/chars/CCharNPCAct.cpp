@@ -1333,7 +1333,10 @@ bool CChar::NPC_Act_Follow(bool fFlee, int maxDistance, bool fMoveAway)
 	int dist = ptMe.GetDist(m_Act_p);
     if (dist > UO_MAP_VIEW_RADAR)		// too far away ?
     {
-        return false;
+		if (Fight_IsActive())
+			return true;
+		else
+        		return false;
     }
 
 	if (fMoveAway)
