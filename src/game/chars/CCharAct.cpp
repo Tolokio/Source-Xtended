@@ -4433,6 +4433,7 @@ void CChar::OnTickSkill()
             Skill_Fail(false);
             break;
         case -SKTRIG_QTY:
+	    g_Log.EventError("CLEANINGSKILL\n"), (dword) GetUID(), GetName(), Skill_GetActive();
             EXC_SETSUB_BLOCK("skill cleanup");
             Skill_Cleanup();
             break;
