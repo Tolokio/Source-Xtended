@@ -1283,8 +1283,13 @@ bool CChar::NPC_Act_Follow(bool fFlee, int maxDistance, bool fMoveAway)
 	if (pChar == nullptr)
 	{
 		// free to do as i wish !
-		Skill_Start(SKILL_NONE);
-		return false;
+		
+		if (!Fight_IsActive())
+			Skill_Start(SKILL_NONE);
+			return false;
+		else
+			Skill_Start(SKILL_NONE);
+			return true;
 	}
 
 	EXC_SET_BLOCK("Trigger");
