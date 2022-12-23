@@ -4293,7 +4293,7 @@ bool CChar::r_Verb( CScript &s, CTextConsole * pSrc ) // Execute command from sc
 
 			return Skill_MakeItem(
 				(ITEMID_TYPE)(g_Cfg.ResourceGetIndexType( RES_ITEMDEF, ttVal[0] )),
-				m_Act_UID, SKTRIG_START, false, iTmp );
+				m_Act_UID, SKTRIG_START, false, iTmp, bRCheck );
 		}
 
 		case CHV_MOUNT:
