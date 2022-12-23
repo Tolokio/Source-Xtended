@@ -4270,6 +4270,7 @@ bool CChar::r_Verb( CScript &s, CTextConsole * pSrc ) // Execute command from sc
 			tchar * ttVal[2];
 			int iTmp = 1;
 			int iArg = Str_ParseCmds( psTmp, ttVal, CountOf( ttVal ), " ,\t" );
+			bool bRCheck = false // if true no resource will be check
 			if (!iArg)
 			{
 				return false;
@@ -4277,6 +4278,12 @@ bool CChar::r_Verb( CScript &s, CTextConsole * pSrc ) // Execute command from sc
 			if ( iArg == 2 )
 			{
 				if ( IsDigit( ttVal[1][0] ) )
+					iTmp = Str_ToI( ttVal[1] );
+			}
+			else if ( iArg == 3 )
+			{
+				bRCheck = true
+				if ( IsDigit( ttVal[1][0][2] ) )
 					iTmp = Str_ToI( ttVal[1] );
 			}
 			//DEBUG_ERR(( "CHV_MAKEITEM iTmp is %d, arg was %s\n",iTmp,psTmp ));
