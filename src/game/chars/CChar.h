@@ -883,7 +883,7 @@ public:
 
 	bool Skill_Mining_Smelt( CItem * pItemOre, CItem * pItemTarg );
 	bool Skill_Tracking( CUID uidTarg, DIR_TYPE & dirPrv, int iDistMax = INT16_MAX );
-	bool Skill_MakeItem( ITEMID_TYPE id, CUID uidTarg, SKTRIG_TYPE stage, bool fSkillOnly = false, int iReplicationQty = 1 );
+	bool Skill_MakeItem( ITEMID_TYPE id, CUID uidTarg, SKTRIG_TYPE stage, bool fSkillOnly = false, int iReplicationQty = 1 bool bResourceCheck = false );
 	bool Skill_MakeItem_Success();
 	bool Skill_Snoop_Check( const CItemContainer * pItem );
 	void Skill_Cleanup();	 // may have just cancelled targetting.
