@@ -165,40 +165,10 @@ bool CClient::Cmd_Control( CChar * pChar2 )
 	pChar1->m_ptHome.Set(pChar2->m_ptHome);
 	pChar2->m_ptHome.Set(homeP1);
 
-	// Put my newbie equipped items on it.
-	for (CSObjContRec* pObjRec : pChar1->GetIterationSafeContReverse())
-	{
-		CItem* pItem = static_cast<CItem*>(pObjRec);
-		if ( !pItem->IsAttr(ATTR_MOVE_NEVER) )
-			continue; // keep GM stuff.
-		if ( !CItemBase::IsVisibleLayer(pItem->GetEquipLayer()) )
-			continue;
-		switch ( pItem->GetEquipLayer() )
-		{
-			case LAYER_BEARD:
-			case LAYER_HAIR:
-			case LAYER_PACK:
-				continue;
+	// Put my newbie equipped items on it. not anymore
 
-			default:
-				break;
-		}
-		pChar2->LayerAdd(pItem);	// add content
-	}
 
-	// Put my GM pack stuff in it's inventory.
-	CItemContainer *pPack1 = pChar1->GetPack();
-	CItemContainer *pPack2 = pChar2->GetPackSafe();
-	if ( pPack1 && pPack2 )
-	{
-		for (CSObjContRec* pObjRec : pPack1->GetIterationSafeContReverse())
-		{
-			CItem* pItem = static_cast<CItem*>(pObjRec);
-			if ( !pItem->IsAttr(ATTR_MOVE_NEVER) )	// keep newbie stuff.
-				continue;
-			pPack2->ContentAdd(pItem);	// add content
-		}
-	}
+	// Put my GM pack stuff in it's inventory. not anymore
 
 	pChar1->ClientDetach();
 	m_pChar = nullptr;
@@ -243,21 +213,7 @@ bool CClient::Cmd_Control( CChar * pChar2 )
 	}
 	else
 	{
-		// delete my ghost.
-		if ( pChar1->GetID() == CREID_EQUIP_GM_ROBE ||
-			pChar1->GetID() == CREID_GHOSTMAN ||
-			pChar1->GetID() == CREID_GHOSTWOMAN ||
-			pChar1->GetID() == CREID_ELFGHOSTMAN ||
-			pChar1->GetID() == CREID_ELFGHOSTWOMAN ||
-			pChar1->GetID() == CREID_GARGGHOSTMAN ||
-			pChar1->GetID() == CREID_GARGGHOSTWOMAN )	// CREID_EQUIP_GM_ROBE
-		{
-			pChar1->Delete();
-		}
-		else
-		{
-			pChar1->SetTimeout(1);	// must kick start the npc.
-		}
+		pChar1->SetTimeout(1);	// must kick start the npc.
 	}
 	addPlayerStart( pChar2 );
 	return true;
