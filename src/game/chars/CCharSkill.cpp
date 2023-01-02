@@ -895,7 +895,7 @@ bool CChar::Skill_MakeItem( ITEMID_TYPE id, CUID uidTarg, SKTRIG_TYPE stage, boo
         }
 	}
 
-	if ( !SkillResourceTest(&(pItemDef->m_SkillMake)) )
+	//if ( !SkillResourceTest(&(pItemDef->m_SkillMake)) )
 		return false;
 	if ( fSkillOnly )
 		return true;
@@ -904,32 +904,32 @@ bool CChar::Skill_MakeItem( ITEMID_TYPE id, CUID uidTarg, SKTRIG_TYPE stage, boo
 	if ( pItemDragging )
 		ItemBounce(pItemDragging);
 
-	iReplicationQty = ResourceConsume(&(pItemDef->m_BaseResources), iReplicationQty, (stage != SKTRIG_SUCCESS));
-	if ( !iReplicationQty )
-		return false;
+	//iReplicationQty = ResourceConsume(&(pItemDef->m_BaseResources), iReplicationQty, (stage != SKTRIG_SUCCESS));
+	//if ( !iReplicationQty )
+	//	return false;
 
 	// Test or consume the needed resources.
 	if ( stage == SKTRIG_FAIL )
 	{
 		// If fail only consume part of them.
-		int iConsumePercent = -1;
-		size_t i = pItemDef->m_SkillMake.FindResourceType(RES_SKILL);
-		if ( i != SCONT_BADINDEX )
-		{
-			if (m_Act_Effect >= 0)
-				iConsumePercent = m_Act_Effect;
-			else 
-			{
-				CSkillDef* pSkillDef = g_Cfg.GetSkillDef((SKILL_TYPE)(pItemDef->m_SkillMake[i].GetResIndex()));
-				if (pSkillDef && !pSkillDef->m_vcEffect.m_aiValues.empty())
-					iConsumePercent = pSkillDef->m_vcEffect.GetRandom();
-			}
-		}
-
-		if ( iConsumePercent < 0 )
-			iConsumePercent = Calc_GetRandVal(50);
-
-		ResourceConsumePart(&(pItemDef->m_BaseResources), iReplicationQty, iConsumePercent, false, pItemDef->GetResourceID().GetResIndex());
+		//int iConsumePercent = -1;
+		//size_t i = pItemDef->m_SkillMake.FindResourceType(RES_SKILL);
+		//if ( i != SCONT_BADINDEX )
+		//{
+		//	if (m_Act_Effect >= 0)
+		//		iConsumePercent = m_Act_Effect;
+		//	else 
+		//	{
+		//		CSkillDef* pSkillDef = g_Cfg.GetSkillDef((SKILL_TYPE)(pItemDef->m_SkillMake[i].GetResIndex()));
+		//		if (pSkillDef && !pSkillDef->m_vcEffect.m_aiValues.empty())
+		//			iConsumePercent = pSkillDef->m_vcEffect.GetRandom();
+		//	}
+		//}
+		//
+		//if ( iConsumePercent < 0 )
+		//	iConsumePercent = Calc_GetRandVal(50);
+		//
+		//ResourceConsumePart(&(pItemDef->m_BaseResources), iReplicationQty, iConsumePercent, false, pItemDef->GetResourceID().GetResIndex());
 		return false;
 	}
 
