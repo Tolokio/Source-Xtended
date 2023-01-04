@@ -1231,6 +1231,7 @@ enum CTRIG_TYPE : short
 	CTRIG_SkillTargetCancel,// SKTRIG_TARGETCANCEL
 	CTRIG_SkillUseQuick,    // SKTRIG_USEQUICK
 	CTRIG_SkillWait,        // SKTRIG_WAIT
+	CTRIG_Sleep,        // I falled sleept and body is created.
 
 	CTRIG_SpellBook,        // Opening a spellbook
 	CTRIG_SpellCast,        // Char is casting a spell.
@@ -1269,6 +1270,7 @@ enum CTRIG_TYPE : short
 	CTRIG_UserVirtue,       // (Client iteraction) Opening Virtue gump.
 	CTRIG_UserVirtueInvoke, // (Client iteraction) Invoquing a Virtue.
 	CTRIG_UserWarmode,      // (Client iteraction) Switching between War/Peace.
+	CTRIG_Wake,        // waking up
 
 	CTRIG_QTY
 };
