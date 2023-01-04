@@ -191,6 +191,7 @@ lpctstr const CChar::sm_szTrigName[CTRIG_QTY+1] =	// static
 	"@SkillTargetCancel",
 	"@SkillUseQuick",
 	"@SkillWait",
+	"@Sleep",
 
 	"@SpellBook",
 	"@SpellCast",			// Char is casting a spell.
@@ -228,7 +229,7 @@ lpctstr const CChar::sm_szTrigName[CTRIG_QTY+1] =	// static
 	"@UserVirtue",
 	"@UserVirtueInvoke",
 	"@UserWarmode",	        // War mode ?
-    nullptr
+	"@Wake",
 };
 
 
