@@ -3042,7 +3042,6 @@ void CChar::Wake()
 
 	if ( IsTrigUsed(TRIGGER_WAKE) )
 	{
-		OnTrigger(CTRIG_WAKE, this, &Args);
 		if ( OnTrigger(CTRIG_WAKE, this, &Args) == TRIGRET_RET_TRUE )
 			return;
 	}
