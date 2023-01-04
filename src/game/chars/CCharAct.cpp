@@ -3034,10 +3034,18 @@ void CChar::Wake()
 	CItemCorpse *pCorpse = FindMyCorpse(true);
 	if (pCorpse == nullptr)
 	{
-		Stat_SetVal(STAT_STR, 0);		// death
-		return;
+		//Stat_SetVal(STAT_STR, 0);		// death
+		//return;
 	}
 
+	CScriptTriggerArgs Args(pCorpse);
+
+	if ( IsTrigUsed(TRIGGER_WAKE) )
+	{
+		OnTrigger(CTRIG_WAKE, this, &Args);
+		if ( OnTrigger(CTRIG_WAKE, this, &Args) == TRIGRET_RET_TRUE )
+			return;
+	}
 	RaiseCorpse(pCorpse);
 	StatFlag_Clear(STATF_SLEEPING);
 	UpdateMode();
@@ -3050,16 +3058,22 @@ void CChar::SleepStart( bool fFrontFall )
 	if (IsStatFlag(STATF_DEAD|STATF_SLEEPING|STATF_POLYMORPH))
 		return;
 
+	
 	CItemCorpse *pCorpse = MakeCorpse(fFrontFall);
 	if (pCorpse == nullptr)
 	{
 		SysMessageDefault(DEFMSG_MSG_CANTSLEEP);
 		return;
 	}
+	CScriptTriggerArgs Args(pCorpse);
 
+	if ( IsTrigUsed(TRIGGER_SLEEP) )
+	{
+		OnTrigger(CTRIG_SLEEP, this, &Args);
+	}
 	// Play death animation (fall on ground)
 	UpdateCanSee(new PacketDeath(this, pCorpse, fFrontFall));
-    pCorpse->Update();
+    	pCorpse->Update();
 
 	SetID(_iPrev_id);
 	StatFlag_Set(STATF_SLEEPING);
