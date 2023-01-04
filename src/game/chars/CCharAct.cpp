@@ -3042,7 +3042,7 @@ void CChar::Wake()
 
 	if ( IsTrigUsed(TRIGGER_WAKE) )
 	{
-		if ( OnTrigger(CTRIG_WAKE, this, &Args) == TRIGRET_RET_TRUE )
+		if ( OnTrigger(CTRIG_Wake, this, &Args) == TRIGRET_RET_TRUE )
 			return;
 	}
 	RaiseCorpse(pCorpse);
@@ -3068,7 +3068,7 @@ void CChar::SleepStart( bool fFrontFall )
 
 	if ( IsTrigUsed(TRIGGER_SLEEP) )
 	{
-		OnTrigger(CTRIG_SLEEP, this, &Args);
+		OnTrigger(CTRIG_Sleep, this, &Args);
 	}
 	// Play death animation (fall on ground)
 	UpdateCanSee(new PacketDeath(this, pCorpse, fFrontFall));
