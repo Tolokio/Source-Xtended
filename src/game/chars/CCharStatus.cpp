@@ -157,10 +157,13 @@ CItemContainer *CChar::GetBank( LAYER_TYPE layer )
 		}
 
 		// Add new bank box if not found
-		pBankBox = dynamic_cast<CItemContainer *>(CItem::CreateScript(id, this));
-		ASSERT(pBankBox);
-		pBankBox->SetAttr(ATTR_NEWBIE|ATTR_MOVE_NEVER);
-		LayerAdd(pBankBox, layer);
+		if (layer != LAYER_PACK)
+		{
+			pBankBox = dynamic_cast<CItemContainer *>(CItem::CreateScript(id, this));
+			ASSERT(pBankBox);
+			pBankBox->SetAttr(ATTR_NEWBIE|ATTR_MOVE_NEVER);
+			LayerAdd(pBankBox, layer);
+		}
 	}
 	return pBankBox;
 }
