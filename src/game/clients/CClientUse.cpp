@@ -282,7 +282,7 @@ bool CClient::Cmd_Use_Item( CItem *pItem, bool fTestTouch, bool fScript )
 			{
 				// If we click directly on poison potion, we will drink poison and get ill.
 				// To use it on Poisoning skill, the skill will request to target the potion.
-				m_pChar->OnSpellEffect(SPELL_Poison, m_pChar, pItem->m_itSpell.m_spelllevel, nullptr);
+				m_pChar->OnSpellEffect(SPELL_Poison, m_pChar, pItem->m_itPotion.m_dwSkillQuality , nullptr);
 				return true;
 			}
 			if ( RES_GET_INDEX(pItem->m_itPotion.m_Type) == SPELL_Explosion )
