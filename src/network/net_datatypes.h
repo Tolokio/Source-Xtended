@@ -59,11 +59,11 @@ struct alignas(alignof(wchar)) naword : public nword
         return *this;
     }
     naword& operator = (char var) noexcept {
-        nword::operator=(static_cast<word>(var));
+        m_val = var;
         return *this;
     }
     naword& operator = (unsigned char var) noexcept {
-        nword::operator=(static_cast<word>(var));
+        m_val = var;
         return *this;
     }
 } PACK_NEEDED;
